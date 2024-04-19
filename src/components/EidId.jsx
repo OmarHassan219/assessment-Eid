@@ -93,9 +93,9 @@ export const EidId = ({audioSrc}) => {
       </div>
       <div
         ref={kiteImg.ref}
-        className="absolute left-[17%]  top-[44%] traslate-y-1/2"
+        className="absolute left-[77%]  top-[44%] traslate-y-1/2"
       >
-        <img src={kite} alt="kite" className="kite w-[20%]" />
+        <img src={kite} alt="kite" className="kite w-[14rem]" />
       </div>
       <div ref={blueLineImg.ref} className="absolute -left-96 max-md:w-[94%] max-md:-left-48 max-md:bottom-28 -rotate-[10deg] bottom-0 traslate-y-1/2">
         <img src={blueline} alt="blueline" className=" " />
