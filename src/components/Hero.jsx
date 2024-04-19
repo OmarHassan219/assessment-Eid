@@ -1,5 +1,7 @@
 import eidmubarak from "../assets/preparationArTxt.9922ff11ba2262c8c8da.png";
 import eidmubarakdark from "../assets/preparationArTxtNight.67645e5f9f7d414ec9a6.png";
+import eidmubaraken from "../assets/preparationEnTxt.2d96cd86c782a7c44799.png";
+import eidmubarakendark from "../assets/preparationEnTxtNight.cd6ca912ad87279915ef.png";
 import bluestar from "../assets/shine01.7705d396efb447290480.png";
 import jug from "../assets/preparationJug.1698288d79715908e659 (1).png";
 import cup from "../assets/preparationCup.6c07522b1da6102d6642.png";
@@ -15,12 +17,15 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap"; // <-- import GSAP
 import { useInView } from "react-intersection-observer";
 import AudioPlayer from "./AudioPlayer";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import buzz from "buzz";
 import mmm from "../assets/eastrenegg.mp3"
+import i18n from "../i18n";
+import { AudioContext } from "../context/AudioContext";
 export const Hero = ({audioSrc , modal}) => {
 
     const [ref, inView] = useInView(); 
+    const { langu} = useContext(AudioContext);
 
     
 
@@ -42,7 +47,6 @@ export const Hero = ({audioSrc , modal}) => {
           
            
        
-
 
 
 
@@ -87,15 +91,10 @@ export const Hero = ({audioSrc , modal}) => {
     },
     { scope: bluestarImg.ref }
   );
-
   return (
     <div ref={ref} className="  max-md:h-[calc(100vh-8.5rem)] h-[calc(100vh-1.5rem)] w-screen    pt-[10%] relative flex items-center justify-center">
             {inView && <AudioPlayer src={audioSrc} />} 
-            {/* <audio ref={audioRef} src={mmm}></audio> */}
-
-            {/* <div>
-      <button onClick={playSound}>Play Sound</button>
-    </div> */}
+           
       <div
         ref={bluestarImg.ref}
         className="absolute left-[83%] w-[6%] max-480:w-[14%] top-[21%]"
@@ -110,8 +109,17 @@ export const Hero = ({audioSrc , modal}) => {
         <img src={cup} alt="coffee" className="" />
       </div>
       <div className=" max-375:w-[70%] max-600:w-[60%] w-[25%]">
+        {langu === "عربي" ?
+        <>
         <img src={eidmubarak} alt="Eid_Mubarak" className="dark:hidden block" />
         <img src={eidmubarakdark} alt="Eid_Mubarak_night" className="dark:block hidden" />
+        </>
+        :
+        <>
+    <img src={eidmubaraken} alt="Eid_Mubarak" className="dark:hidden block" />
+    <img src={eidmubarakendark} alt="Eid_Mubarak" className="dark:block hidden" />
+        </>
+}
       </div>
       <div ref={decorationImg.ref} className="absolute right-[0]  w-full  bottom-[-5%]">
         <img

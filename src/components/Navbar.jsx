@@ -11,9 +11,8 @@ import { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { AudioContext } from "../context/AudioContext";
 export const Navbar = () => {
-  const { pauseAudio, setPauseAudio } = useContext(AudioContext);
+  const { pauseAudio, setPauseAudio , langu, setlangu} = useContext(AudioContext);
 
-const [langu, setlangu] = useState('English')
     const {i18n} = useTranslation()
 
 

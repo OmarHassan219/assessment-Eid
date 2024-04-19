@@ -1,6 +1,8 @@
 import bluestar from "../assets/shine01.7705d396efb447290480.png"
 import takbeer from "../assets/TakbeerARLight.6abbb247e70e91643aff.png"
 import takbeernight from "../assets/TakbeerARDark.a9a573bb495474e82440 (1).png"
+import takbeernighten from "../assets/TakbeerENDark.cf5fc5b1d3d056560a3b.png"
+import takbeernightlight from "../assets/TakbeerENLight.6297cc1e0f17c4408a1a (1).png"
 import greenline from "../assets/rideElement04.836127a4e9d1e9c63fa9.png"
 import pinkballoon from "../assets/OudPinkBallon.9f7218c3f16278c75f72.png"
 import greenballoon from "../assets/OudGreenBallon.3dbb0b434850613a8628.png"
@@ -10,9 +12,12 @@ import gsap from "gsap"; // <-- import GSAP
 import { useInView } from "react-intersection-observer"
 import AudioPlayer from "./AudioPlayer"
 import { useTranslation } from "react-i18next"
+import { useContext } from "react"
+import { AudioContext } from "../context/AudioContext"
 export const Takbeer = ({audioSrc}) => {
     const [ref, inView] = useInView(); 
 
+    const { langu} = useContext(AudioContext);
 
     const bluestarImg = useParallax({
         translateY: ["10px", "-10px"],
@@ -175,8 +180,16 @@ export const Takbeer = ({audioSrc}) => {
     <img ref={ref} src={bluestar} alt="blue_star" className="bluestar" />
         </div>
       <div ref={takbeerImg.ref} className="absolute left-[71%] w-[22%] rotate-[40deg] -top-4">
-    <img src={takbeer} alt="takbeer" className="dark:hidden block" />
-    <img src={takbeernight} alt="takbeernight" className="dark:block hidden" />
+        {langu === "عربي"  ? 
+    <>
+        <img src={takbeer} alt="takbeer" className="dark:hidden block" />
+        <img src={takbeernight} alt="takbeernight" className="dark:block hidden" />
+    </> :
+          <>
+          <img src={takbeernightlight} alt="takbeer" className="dark:hidden block" />
+          <img src={takbeernighten} alt="takbeernight" className="dark:block hidden" />
+      </>
+    }
         </div>
       <div ref={greenLlineImg.ref} className="absolute left-[39%] w-full ">
     <img src={greenline} alt="greenline" className="w-[66%]" />
